@@ -6,6 +6,6 @@ def helloworldfuction(request):
     returnedobject =  HttpResponse('<h1>hello world</h1>')
     return returnedobject
 
-class Helloworldclass(TemplateView):
+class HelloworldClass(TemplateView):
     template_name = 'hello.html'
 
