@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
+from .models import BoardModel
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def signupfunc(request):
             return render(request, 'signup.html', {'some': 100})
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
-    return render(request, 'signup.html', {'some': 100})
+    return render(request, 'signup.html')
 
 def loginfunc(request):
     if request.method == "POST":
@@ -27,3 +28,7 @@ def loginfunc(request):
         else:
             return render(request, 'login.html', {'context': 'not logged in'})
     return render(request, 'login.html', {'context': 'get method'})
+
+def listfunc(request):
+    object_list = BoardModel.objects.all()
+    return render(request, 'list.html',{'object_list':object_list})
