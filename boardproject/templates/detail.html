@@ -11,13 +11,13 @@
 <div class="container">
     <div class="alert alert-success" role="alert">
         <p>タイトル: {{ object.title }}</p>
-        <p>投稿者: {{ object.auther }}</p>
-        <p><img "src={{ object.snsimage.url }}"></p>
-        <a href="#" class="btn btn-primary " role="button" aria-disabled="true">Primary link</a>
-        <a href="#" class="btn btn-secondary " role="button" aria-disabled="true">Link</a>
+        <p>投稿者: {{ object.author }}</p>
+        <p><img src="{{ object.sns_image.url }}" width=300 ></p>
+        <a href="{% url 'good' object.pk %}" class="btn btn-primary " role="button" aria-disabled="true">いいねする</a>
+        <a href="{% url 'read' object.pk %}" class="btn btn-secondary " role="button" aria-disabled="true">既読にする</a>
     </div>
+</div>
 {% else %}
 please login
 {% endif %}
-</div>
 {% endblock content %}
